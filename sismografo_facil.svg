@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="980" viewBox="0 0 1500 980">
+  <defs>
+    <style>
+      .title { font: 700 42px 'Segoe UI', Arial, sans-serif; fill: #16324f; }
+      .subtitle { font: 500 24px 'Segoe UI', Arial, sans-serif; fill: #355070; }
+      .label { font: 700 24px 'Segoe UI', Arial, sans-serif; fill: #16324f; }
+      .small { font: 500 20px 'Segoe UI', Arial, sans-serif; fill: #355070; }
+      .pin { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #102a43; }
+      .note { font: 600 22px 'Segoe UI', Arial, sans-serif; fill: #7a1f1f; }
+    </style>
+    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#e63946"/>
+    </marker>
+    <marker id="arrowBlack" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#222222"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1d4ed8"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <rect width="1500" height="980" fill="#f7fbff"/>
+  <rect x="30" y="30" width="1440" height="920" rx="32" fill="#ffffff" stroke="#d8e6f0" stroke-width="3"/>
+
+  <text x="70" y="95" class="title">Conexion mas simple para que tu sismografo funcione con la pagina web</text>
+  <text x="70" y="135" class="subtitle">Usa solo Arduino Uno + sensor MPU6050 + cable USB al computador</text>
+
+  <rect x="90" y="210" width="420" height="470" rx="28" fill="#dbeafe" stroke="#7fb3ff" stroke-width="3"/>
+  <text x="300" y="260" text-anchor="middle" class="label">Arduino Uno</text>
+  <rect x="135" y="290" width="330" height="330" rx="24" fill="#2d6cdf"/>
+  <text x="300" y="350" text-anchor="middle" style="font:700 64px 'Segoe UI', Arial, sans-serif; fill:#ffffff;">UNO</text>
+  <text x="175" y="430" class="pin" fill="#ffffff">5V</text>
+  <text x="175" y="490" class="pin" fill="#ffffff">GND</text>
+  <text x="175" y="550" class="pin" fill="#ffffff">A4 / SDA</text>
+  <text x="175" y="610" class="pin" fill="#ffffff">A5 / SCL</text>
+  <circle cx="425" cy="425" r="9" fill="#ffffff"/>
+  <circle cx="425" cy="485" r="9" fill="#ffffff"/>
+  <circle cx="425" cy="545" r="9" fill="#ffffff"/>
+  <circle cx="425" cy="605" r="9" fill="#ffffff"/>
+  <text x="140" y="655" class="small" fill="#ffffff">El cable USB del Arduino va al PC</text>
+
+  <rect x="980" y="250" width="350" height="360" rx="28" fill="#d1fae5" stroke="#6cc49a" stroke-width="3"/>
+  <text x="1155" y="300" text-anchor="middle" class="label">MPU6050</text>
+  <rect x="1050" y="340" width="210" height="190" rx="20" fill="#41b883"/>
+  <text x="1155" y="400" text-anchor="middle" style="font:700 34px 'Segoe UI', Arial, sans-serif; fill:#083344;">Sensor</text>
+  <text x="1155" y="440" text-anchor="middle" style="font:700 28px 'Segoe UI', Arial, sans-serif; fill:#083344;">MPU6050</text>
+  <text x="1000" y="565" class="pin">VCC</text>
+  <text x="1085" y="565" class="pin">GND</text>
+  <text x="1175" y="565" class="pin">SDA</text>
+  <text x="1260" y="565" class="pin">SCL</text>
+
+  <path d="M435 425 C640 425, 790 425, 995 425" fill="none" stroke="#e63946" stroke-width="8" marker-end="url(#arrowRed)"/>
+  <path d="M435 485 C640 485, 790 485, 1080 485" fill="none" stroke="#222222" stroke-width="8" marker-end="url(#arrowBlack)"/>
+  <path d="M435 545 C640 545, 790 545, 1170 545" fill="none" stroke="#1d4ed8" stroke-width="8" marker-end="url(#arrowBlue)"/>
+  <path d="M435 605 C640 605, 790 605, 1260 605" fill="none" stroke="#16a34a" stroke-width="8" marker-end="url(#arrowGreen)"/>
+
+  <rect x="560" y="360" width="280" height="58" rx="14" fill="#fff1f2" stroke="#fecdd3"/>
+  <text x="700" y="397" text-anchor="middle" class="pin" fill="#e63946">5V -&gt; VCC</text>
+  <rect x="560" y="450" width="280" height="58" rx="14" fill="#f3f4f6" stroke="#d1d5db"/>
+  <text x="700" y="487" text-anchor="middle" class="pin" fill="#222222">GND -&gt; GND</text>
+  <rect x="560" y="540" width="280" height="58" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="700" y="577" text-anchor="middle" class="pin" fill="#1d4ed8">A4 -&gt; SDA</text>
+  <rect x="560" y="630" width="280" height="58" rx="14" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="700" y="667" text-anchor="middle" class="pin" fill="#16a34a">A5 -&gt; SCL</text>
+
+  <rect x="90" y="735" width="1240" height="150" rx="24" fill="#fff7ed" stroke="#fdba74" stroke-width="3"/>
+  <text x="130" y="785" class="label" fill="#9a3412">Haz esto primero</text>
+  <text x="130" y="828" class="small">1. Deja conectado solo el Arduino, el MPU6050 y el cable USB.</text>
+  <text x="130" y="862" class="small">2. Por ahora desconecta o ignora el modulo Bluetooth HC-05, los LEDs y el buzzer.</text>
+  <text x="130" y="896" class="small">3. Cuando esto mande datos al PC, ahi si agregamos las luces y la alarma.</text>
+
+  <rect x="1010" y="80" width="355" height="120" rx="20" fill="#fee2e2" stroke="#fca5a5" stroke-width="3"/>
+  <text x="1040" y="128" class="note">No uses ahora:</text>
+  <text x="1040" y="165" class="small" fill="#7a1f1f">Bluetooth HC-05</text>
+  <text x="1040" y="193" class="small" fill="#7a1f1f">LEDs y buzzer</text>
+</svg>

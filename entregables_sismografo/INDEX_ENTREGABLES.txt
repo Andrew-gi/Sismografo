@@ -1,0 +1,3 @@
+Entregables del manual técnico:
+- Manual_Tecnico_Sismografo.docx
+- Manual_Tecnico_Sismografo.pdf

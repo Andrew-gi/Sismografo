@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <defs>
+    <style>
+      .t1 { font: 700 40px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .t2 { font: 600 22px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .t3 { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .pin { font: 700 18px 'Consolas', monospace; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="980" fill="#f8fafc"/>
+  <rect x="24" y="24" width="1552" height="932" rx="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <text x="54" y="78" class="t1">Modelo 2D (Protoboard exacto) - Arduino + MPU6050 + LEDs + Buzzer</text>
+
+  <!-- Arduino -->
+  <rect x="64" y="140" width="360" height="320" rx="20" fill="#dbeafe" stroke="#3b82f6" stroke-width="3"/>
+  <text x="92" y="188" class="t2">Arduino UNO</text>
+  <text x="92" y="230" class="pin">5V</text>
+  <text x="92" y="262" class="pin">GND</text>
+  <text x="92" y="294" class="pin">A4 (SDA)</text>
+  <text x="92" y="326" class="pin">A5 (SCL)</text>
+  <text x="92" y="370" class="pin">D4 LED verde</text>
+  <text x="92" y="402" class="pin">D5 LED amarillo</text>
+  <text x="92" y="434" class="pin">D6 LED rojo</text>
+  <text x="92" y="466" class="pin">D8 Buzzer +</text>
+
+  <!-- Protoboard -->
+  <rect x="470" y="132" width="1060" height="760" rx="18" fill="#f1f5f9" stroke="#64748b" stroke-width="3"/>
+  <text x="504" y="176" class="t2">Protoboard (vista superior)</text>
+  <rect x="520" y="210" width="960" height="24" rx="8" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="530" y="227" class="t3">Riel rojo (+)</text>
+  <rect x="520" y="248" width="960" height="24" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="530" y="266" class="t3">Riel azul (- / GND)</text>
+
+  <!-- Row markers -->
+  <line x1="540" y1="348" x2="1460" y2="348" stroke="#94a3b8" stroke-dasharray="6 6"/>
+  <line x1="540" y1="430" x2="1460" y2="430" stroke="#94a3b8" stroke-dasharray="6 6"/>
+  <line x1="540" y1="512" x2="1460" y2="512" stroke="#94a3b8" stroke-dasharray="6 6"/>
+  <text x="500" y="354" class="pin">Fila 20</text>
+  <text x="500" y="436" class="pin">Fila 24</text>
+  <text x="500" y="518" class="pin">Fila 28</text>
+
+  <!-- MPU6050 -->
+  <rect x="580" y="590" width="260" height="180" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+  <text x="612" y="632" class="t2">MPU6050</text>
+  <text x="612" y="668" class="pin">VCC  GND  SDA  SCL</text>
+
+  <!-- LEDs + resistors -->
+  <circle cx="980" cy="348" r="28" fill="#4ade80" stroke="#14532d" stroke-width="3"/>
+  <text x="1030" y="354" class="t3">LED verde (fila 20)</text>
+  <rect x="900" y="338" width="50" height="20" fill="#e2e8f0" stroke="#64748b"/>
+
+  <circle cx="980" cy="430" r="28" fill="#fde047" stroke="#854d0e" stroke-width="3"/>
+  <text x="1030" y="436" class="t3">LED amarillo (fila 24)</text>
+  <rect x="900" y="420" width="50" height="20" fill="#e2e8f0" stroke="#64748b"/>
+
+  <circle cx="980" cy="512" r="28" fill="#f87171" stroke="#7f1d1d" stroke-width="3"/>
+  <text x="1030" y="518" class="t3">LED rojo (fila 28)</text>
+  <rect x="900" y="502" width="50" height="20" fill="#e2e8f0" stroke="#64748b"/>
+
+  <!-- buzzer -->
+  <circle cx="1320" cy="430" r="48" fill="#111827" stroke="#0f172a" stroke-width="3"/>
+  <text x="1275" y="516" class="t3">Buzzer</text>
+  <text x="1262" y="536" class="t3">+ a D8, - a GND</text>
+
+  <!-- Wires from arduino to rails/mpu -->
+  <path d="M 420 226 C 500 226, 500 222, 520 222" stroke="#ef4444" stroke-width="5" fill="none"/>
+  <path d="M 420 258 C 500 258, 500 260, 520 260" stroke="#2563eb" stroke-width="5" fill="none"/>
+  <path d="M 420 290 C 540 290, 540 700, 760 700" stroke="#0ea5e9" stroke-width="5" fill="none"/>
+  <path d="M 420 322 C 540 322, 540 730, 800 730" stroke="#22c55e" stroke-width="5" fill="none"/>
+  <path d="M 420 366 C 740 366, 740 348, 900 348" stroke="#22c55e" stroke-width="5" fill="none"/>
+  <path d="M 420 398 C 740 398, 740 430, 900 430" stroke="#eab308" stroke-width="5" fill="none"/>
+  <path d="M 420 430 C 740 430, 740 512, 900 512" stroke="#ef4444" stroke-width="5" fill="none"/>
+  <path d="M 420 462 C 980 462, 980 390, 1272 390" stroke="#7c3aed" stroke-width="5" fill="none"/>
+
+  <!-- LED cathodes to GND -->
+  <path d="M 980 376 C 980 430, 820 430, 820 260" stroke="#2563eb" stroke-width="4" fill="none"/>
+  <path d="M 980 458 C 980 500, 850 500, 850 260" stroke="#2563eb" stroke-width="4" fill="none"/>
+  <path d="M 980 540 C 980 580, 880 580, 880 260" stroke="#2563eb" stroke-width="4" fill="none"/>
+  <path d="M 1368 430 C 1420 430, 1420 260, 1200 260" stroke="#2563eb" stroke-width="4" fill="none"/>
+
+  <!-- Notes -->
+  <rect x="64" y="520" width="360" height="312" rx="16" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="88" y="560" class="t2">Orden de conexion</text>
+  <text x="88" y="596" class="t3">1) 5V -> riel rojo</text>
+  <text x="88" y="626" class="t3">2) GND -> riel azul</text>
+  <text x="88" y="656" class="t3">3) MPU: VCC/GND/SDA/SCL</text>
+  <text x="88" y="686" class="t3">4) D4/D5/D6 -> resistencia -> LED (+)</text>
+  <text x="88" y="716" class="t3">5) LED (-) -> riel azul</text>
+  <text x="88" y="746" class="t3">6) D8 -> buzzer (+)</text>
+  <text x="88" y="776" class="t3">7) buzzer (-) -> riel azul</text>
+  <text x="88" y="812" class="t3">No usar RX/TX (0,1) por ahora.</text>
+</svg>

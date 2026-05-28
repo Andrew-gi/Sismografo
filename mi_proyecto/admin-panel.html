@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel Admin | Sismos</title>
+  <style>
+    :root {
+      --bg-0: #060f12;
+      --bg-1: #0b1b1f;
+      --bg-2: #10262b;
+      --surface: rgba(11, 27, 31, 0.82);
+      --line: rgba(157, 211, 160, 0.24);
+      --text: #ecf4ef;
+      --muted: #98b3a0;
+      --ok: #9dd3a0;
+      --ok-strong: #78c77b;
+      --warn: #eac678;
+      --err: #ef8f8f;
+      --radius: 14px;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 480px at 70% -5%, rgba(120, 199, 123, 0.18), transparent 70%),
+        radial-gradient(900px 400px at 15% 5%, rgba(88, 160, 117, 0.15), transparent 70%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-0));
+      min-height: 100vh;
+      padding: 18px;
+    }
+
+    .shell {
+      max-width: 1160px;
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(160deg, rgba(16, 38, 43, 0.88), rgba(7, 15, 18, 0.94));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(6px);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 15, 18, 0.82);
+      backdrop-filter: blur(6px);
+    }
+
+    .brand { font-size: 18px; font-weight: 700; letter-spacing: 0.35px; }
+    .brand small { display: block; font-size: 12px; color: var(--muted); font-weight: 500; }
+
+    .nav {
+      display: inline-flex;
+      gap: 8px;
+      padding: 6px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(8, 19, 23, 0.66);
+    }
+
+    .nav button {
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      padding: 9px 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .nav button:hover { color: var(--text); }
+    .nav button.active {
+      color: #0a150f;
+      background: linear-gradient(135deg, var(--ok), #b8eab8);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(130, 210, 142, 0.28);
+    }
+
+    .toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .pill {
+      border: 1px solid var(--line);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    .btn {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 12px;
+      background: rgba(11, 27, 31, 0.68);
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn:hover { border-color: rgba(157, 211, 160, 0.45); }
+    .btn.primary {
+      border: none;
+      color: #0a150f;
+      background: linear-gradient(135deg, var(--ok), #b8eab8);
+    }
+    .btn.warn { color: #231809; border-color: rgba(234, 198, 120, 0.42); background: rgba(234, 198, 120, 0.2); }
+    .btn.danger { color: #f9d9d9; border-color: rgba(239, 143, 143, 0.45); background: rgba(170, 47, 47, 0.22); }
+
+    .layout { padding: 16px; display: grid; gap: 14px; }
+    .panel {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: var(--surface);
+      animation: fade 0.24s ease;
+    }
+    .panel.active { display: block; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      color: var(--text);
+      background: rgba(8, 19, 23, 0.9);
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: rgba(157, 211, 160, 0.54); box-shadow: 0 0 0 3px rgba(157, 211, 160, 0.14); }
+
+    .status {
+      min-height: 24px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 13px;
+      border: 1px dashed transparent;
+    }
+    .status.ok { color: #d4f4d4; border-color: rgba(157, 211, 160, 0.5); background: rgba(35, 91, 44, 0.35); }
+    .status.err { color: #ffe2e2; border-color: rgba(239, 143, 143, 0.5); background: rgba(125, 27, 27, 0.34); }
+    .status.warn { color: #ffecc6; border-color: rgba(234, 198, 120, 0.5); background: rgba(117, 87, 23, 0.3); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    th, td {
+      border-bottom: 1px solid rgba(157, 211, 160, 0.22);
+      padding: 9px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { color: #0a150f; background: rgba(157, 211, 160, 0.85); font-size: 12px; }
+    tr:hover td { background: rgba(157, 211, 160, 0.08); }
+
+    .table-wrap { overflow-x: auto; }
+    .small { color: var(--muted); font-size: 12px; }
+
+    @media (max-width: 760px) {
+      body { padding: 10px; }
+      .topbar { padding: 12px; }
+      .nav { width: 100%; justify-content: center; }
+      .toolbar { width: 100%; justify-content: flex-end; }
+      .layout { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        Panel Administrativo
+        <small>Gestion SQL y usuarios</small>
+      </div>
+
+      <nav class="nav" id="top-nav">
+        <button class="active" data-panel="auth-panel">Acceso</button>
+        <button data-panel="users-panel">Usuarios</button>
+        <button data-panel="sql-panel">SQL Explorer</button>
+      </nav>
+
+      <div class="toolbar">
+        <span class="pill" id="user-pill">Sin sesion</span>
+        <button class="btn" id="btn-go-site" type="button">Ir a la web</button>
+        <button class="btn danger" id="btn-logout" type="button">Salir</button>
+      </div>
+    </header>
+
+    <section class="layout">
+      <div class="status" id="status-box"></div>
+
+      <article class="panel active" id="auth-panel">
+        <h2>Inicio de sesion y registro</h2>
+        <p class="small">Usa credenciales validas. Para CRUD total necesitas rol <b>admin</b>.</p>
+
+        <div class="grid">
+          <form id="form-login">
+            <h3>Iniciar sesion</h3>
+            <label for="login-email">Correo</label>
+            <input id="login-email" type="email" required placeholder="admin@correo.com" />
+            <label for="login-password">Contrasena</label>
+            <input id="login-password" type="password" required minlength="6" />
+            <div class="row" style="margin-top:10px">
+              <button class="btn primary" type="submit">Entrar</button>
+            </div>
+          </form>
+
+          <form id="form-register">
+            <h3>Registrar usuario</h3>
+            <label for="reg-name">Nombre</label>
+            <input id="reg-name" type="text" required />
+            <label for="reg-email">Correo</label>
+            <input id="reg-email" type="email" required />
+            <label for="reg-phone">Telefono (opcional)</label>
+            <input id="reg-phone" type="text" />
+            <label for="reg-password">Contrasena</label>
+            <input id="reg-password" type="password" required minlength="6" />
+            <div class="row" style="margin-top:10px">
+              <button class="btn primary" type="submit">Crear cuenta</button>
+            </div>
+          </form>
+        </div>
+      </article>
+
+      <article class="panel" id="users-panel">
+        <h2>Usuarios (CRUD)</h2>
+        <div class="grid">
+          <form id="form-user-create">
+            <h3>Nuevo usuario</h3>
+            <label for="usr-name">Nombre</label>
+            <input id="usr-name" type="text" required />
+            <label for="usr-email">Correo</label>
+            <input id="usr-email" type="email" required />
+            <label for="usr-phone">Telefono</label>
+            <input id="usr-phone" type="text" />
+            <label for="usr-password">Contrasena</label>
+            <input id="usr-password" type="password" minlength="6" required />
+            <label for="usr-role">Rol</label>
+            <select id="usr-role">
+              <option value="usuario">usuario</option>
+              <option value="admin">admin</option>
+            </select>
+            <div class="row" style="margin-top:10px">
+              <button class="btn primary" type="submit">Guardar usuario</button>
+              <button class="btn" id="btn-load-users" type="button">Actualizar lista</button>
+            </div>
+            <hr style="border-color:rgba(157,211,160,.2);margin:12px 0" />
+            <h3 style="margin:6px 0 8px">Eliminar por ID</h3>
+            <label for="usr-delete-id">ID de usuario</label>
+            <input id="usr-delete-id" type="number" min="1" placeholder="Ej: 12" />
+            <div class="row" style="margin-top:10px">
+              <button class="btn danger" id="btn-delete-user-id" type="button">Eliminar usuario</button>
+            </div>
+          </form>
+
+          <div>
+            <h3>Listado</h3>
+            <p class="small">Editar usa un formulario JSON rapido para cambios sin recargar.</p>
+            <div class="table-wrap">
+              <table id="users-table"></table>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel" id="sql-panel">
+        <h2>SQL Explorer (CRUD real)</h2>
+        <div class="row">
+          <button class="btn" id="btn-load-tables" type="button">Cargar tablas</button>
+          <label style="margin:0" for="sql-table">Tabla</label>
+          <select id="sql-table" style="max-width:260px"></select>
+          <label style="margin:0" for="sql-limit">Limite</label>
+          <input id="sql-limit" type="number" min="1" max="10000" value="200" style="max-width:110px" />
+          <label style="margin:0" for="sql-all">Ver todo</label>
+          <input id="sql-all" type="checkbox" style="width:auto" />
+          <button class="btn primary" id="btn-load-table-data" type="button">Consultar</button>
+          <button class="btn warn" id="btn-create-row" type="button">Agregar fila</button>
+        </div>
+        <p class="small">Tip: para editar/agregar se abre un prompt JSON. Ejemplo: {"nombre":"Nodo A","estado":"activo"}.</p>
+        <div class="table-wrap">
+          <table id="sql-table-data"></table>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const API_BASE = window.location.protocol === "file:" ? "http://localhost:3000" : "";
+    const TOKEN_KEY = "sismo_admin_token";
+
+    const state = {
+      token: localStorage.getItem(TOKEN_KEY) || "",
+      user: null,
+      sql: { table: "", pk: null, rows: [], columns: [] }
+    };
+
+    const els = {
+      status: document.getElementById("status-box"),
+      userPill: document.getElementById("user-pill"),
+      nav: document.getElementById("top-nav"),
+      panels: {
+        auth: document.getElementById("auth-panel"),
+        users: document.getElementById("users-panel"),
+        sql: document.getElementById("sql-panel")
+      },
+      btnLogout: document.getElementById("btn-logout"),
+      btnGoSite: document.getElementById("btn-go-site"),
+
+      formLogin: document.getElementById("form-login"),
+      formRegister: document.getElementById("form-register"),
+      loginEmail: document.getElementById("login-email"),
+      loginPassword: document.getElementById("login-password"),
+      regName: document.getElementById("reg-name"),
+      regEmail: document.getElementById("reg-email"),
+      regPhone: document.getElementById("reg-phone"),
+      regPassword: document.getElementById("reg-password"),
+
+      formUserCreate: document.getElementById("form-user-create"),
+      usrName: document.getElementById("usr-name"),
+      usrEmail: document.getElementById("usr-email"),
+      usrPhone: document.getElementById("usr-phone"),
+      usrPassword: document.getElementById("usr-password"),
+      usrRole: document.getElementById("usr-role"),
+      btnLoadUsers: document.getElementById("btn-load-users"),
+      usrDeleteId: document.getElementById("usr-delete-id"),
+      btnDeleteUserId: document.getElementById("btn-delete-user-id"),
+      usersTable: document.getElementById("users-table"),
+
+      btnLoadTables: document.getElementById("btn-load-tables"),
+      sqlTable: document.getElementById("sql-table"),
+      sqlLimit: document.getElementById("sql-limit"),
+      sqlAll: document.getElementById("sql-all"),
+      btnLoadTableData: document.getElementById("btn-load-table-data"),
+      btnCreateRow: document.getElementById("btn-create-row"),
+      sqlTableData: document.getElementById("sql-table-data")
+    };
+
+    function showStatus(type, text) {
+      els.status.className = `status ${type}`;
+      els.status.textContent = text;
+    }
+
+    function apiUrl(path) {
+      return `${API_BASE}${path}`;
+    }
+
+    async function request(path, options = {}) {
+      const headers = {
+        ...(options.body ? { "Content-Type": "application/json" } : {}),
+        ...(state.token ? { Authorization: `Bearer ${state.token}` } : {}),
+        ...(options.headers || {})
+      };
+
+      try {
+        const res = await fetch(apiUrl(path), { ...options, headers });
+        let data = null;
+        try { data = await res.json(); } catch { data = null; }
+        if (!res.ok || (data && data.ok === false)) {
+          throw new Error(data?.message || `Error HTTP ${res.status}`);
+        }
+        return data || { ok: true };
+      } catch (err) {
+        if (String(err.message || "").includes("Failed to fetch")) {
+          throw new Error("No hay conexion con el servidor. Ejecuta npm start y abre http://localhost:3000/admin-panel.html");
+        }
+        throw err;
+      }
+    }
+
+    function setPanel(panelId) {
+      const all = { "auth-panel": "auth", "users-panel": "users", "sql-panel": "sql" };
+      Object.values(els.panels).forEach((p) => p.classList.remove("active"));
+      const target = document.getElementById(panelId);
+      if (target) target.classList.add("active");
+      els.nav.querySelectorAll("button").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.panel === panelId);
+      });
+      if (!state.user && panelId !== "auth-panel") {
+        showStatus("warn", "Inicia sesion para usar las opciones de administracion.");
+      }
+      if (state.user && all[panelId] === "users") loadUsers().catch(handleError);
+      if (state.user && all[panelId] === "sql") loadTables().catch(handleError);
+    }
+
+    function updateSessionUI() {
+      if (state.user) {
+        els.userPill.textContent = `${state.user.nombre} (${state.user.rol})`;
+        els.btnLogout.style.display = "inline-flex";
+      } else {
+        els.userPill.textContent = "Sin sesion";
+        els.btnLogout.style.display = "none";
+      }
+    }
+
+    function isAdmin() {
+      return state.user && state.user.rol === "admin";
+    }
+
+    function handleError(error) {
+      showStatus("err", error?.message || "Error no controlado.");
+      console.error(error);
+    }
+
+    async function loadMe() {
+      if (!state.token) return;
+      const data = await request("/api/auth/me");
+      state.user = data.user;
+      updateSessionUI();
+      showStatus("ok", `Sesion activa: ${data.user.nombre}.`);
+    }
+
+    async function onLogin(ev) {
+      ev.preventDefault();
+      const payload = { email: els.loginEmail.value.trim(), password: els.loginPassword.value };
+      const data = await request("/api/auth/login", { method: "POST", body: JSON.stringify(payload) });
+      state.token = data.token;
+      localStorage.setItem(TOKEN_KEY, data.token);
+      state.user = data.user;
+      updateSessionUI();
+      showStatus("ok", `Bienvenido, ${data.user.nombre}.`);
+      if (isAdmin()) setPanel("users-panel");
+    }
+
+    async function onRegister(ev) {
+      ev.preventDefault();
+      const payload = {
+        nombre: els.regName.value.trim(),
+        email: els.regEmail.value.trim(),
+        telefono: els.regPhone.value.trim() || null,
+        password: els.regPassword.value
+      };
+      await request("/api/auth/register", { method: "POST", body: JSON.stringify(payload) });
+      showStatus("ok", "Registro exitoso. Ahora puedes iniciar sesion.");
+      els.loginEmail.value = payload.email;
+      els.loginPassword.value = payload.password;
+      els.regPassword.value = "";
+    }
+
+    function renderUsers(rows) {
+      if (!rows || rows.length === 0) {
+        els.usersTable.innerHTML = "<tr><td>No hay usuarios.</td></tr>";
+        return;
+      }
+      const cols = ["usuario_id", "nombre", "email", "telefono", "rol", "activo", "acciones"];
+      const thead = `<tr>${cols.map((c) => `<th>${c}</th>`).join("")}</tr>`;
+      const body = rows.map((r) => {
+        return `<tr>
+          <td>${r.usuario_id}</td>
+          <td>${escapeHtml(r.nombre)}</td>
+          <td>${escapeHtml(r.email)}</td>
+          <td>${escapeHtml(r.telefono || "")}</td>
+          <td>${escapeHtml(r.rol || "")}</td>
+          <td>${r.activo ? "si" : "no"}</td>
+          <td>
+            <button class="btn" data-act="edit-user" data-id="${r.usuario_id}">Editar</button>
+            <button class="btn danger" data-act="del-user" data-id="${r.usuario_id}">Borrar</button>
+          </td>
+        </tr>`;
+      }).join("");
+      els.usersTable.innerHTML = `${thead}${body}`;
+    }
+
+    async function loadUsers() {
+      if (!isAdmin()) throw new Error("Se requiere rol admin para ver usuarios.");
+      const data = await request("/api/admin/usuarios");
+      renderUsers(data.data || []);
+      showStatus("ok", `Usuarios cargados: ${data.total}.`);
+    }
+
+    async function createUser(ev) {
+      ev.preventDefault();
+      if (!isAdmin()) throw new Error("Solo admin puede crear usuarios.");
+      const payload = {
+        nombre: els.usrName.value.trim(),
+        email: els.usrEmail.value.trim(),
+        telefono: els.usrPhone.value.trim() || null,
+        password: els.usrPassword.value,
+        rol: els.usrRole.value
+      };
+      await request("/api/admin/usuarios", { method: "POST", body: JSON.stringify(payload) });
+      showStatus("ok", "Usuario creado correctamente.");
+      els.formUserCreate.reset();
+      await loadUsers();
+    }
+
+    async function editUser(id) {
+      if (!isAdmin()) throw new Error("Solo admin puede editar usuarios.");
+      const raw = prompt("Pega JSON con campos a actualizar. Ej: {\"nombre\":\"Nuevo\",\"rol\":\"admin\"}");
+      if (!raw) return;
+      let payload;
+      try { payload = JSON.parse(raw); } catch { throw new Error("JSON invalido para edicion de usuario."); }
+      await request(`/api/admin/usuarios/${id}`, { method: "PUT", body: JSON.stringify(payload) });
+      showStatus("ok", `Usuario ${id} actualizado.`);
+      await loadUsers();
+    }
+
+    async function deleteUser(id) {
+      if (!isAdmin()) throw new Error("Solo admin puede borrar usuarios.");
+      if (!confirm(`Eliminar usuario ${id}?`)) return;
+      await request(`/api/admin/usuarios/${id}`, { method: "DELETE" });
+      showStatus("ok", `Usuario ${id} eliminado.`);
+      await loadUsers();
+    }
+
+    async function deleteUserByIdInput() {
+      const id = Number(els.usrDeleteId.value);
+      if (!Number.isInteger(id) || id <= 0) {
+        throw new Error("Ingresa un ID valido para eliminar.");
+      }
+      await deleteUser(id);
+      els.usrDeleteId.value = "";
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll("\"", "&quot;");
+    }
+
+    async function loadTables() {
+      if (!isAdmin()) throw new Error("Se requiere rol admin para SQL Explorer.");
+      const data = await request("/api/admin/db/tables");
+      const options = (data.data || []).map((t) => `<option value="${t.table_name}">${t.table_name}</option>`).join("");
+      els.sqlTable.innerHTML = options || "";
+      if (!options) {
+        showStatus("warn", "No se encontraron tablas en la base actual.");
+        return;
+      }
+      if (!state.sql.table) state.sql.table = els.sqlTable.value;
+      els.sqlTable.value = state.sql.table;
+      showStatus("ok", `Tablas disponibles: ${data.total}.`);
+      await loadTableData();
+    }
+
+    async function loadTableData() {
+      if (!isAdmin()) throw new Error("Se requiere rol admin para SQL Explorer.");
+      const table = els.sqlTable.value;
+      if (!table) throw new Error("Selecciona una tabla.");
+      state.sql.table = table;
+      const limit = Math.min(Math.max(Number(els.sqlLimit.value || 200), 1), 10000);
+      const all = Boolean(els.sqlAll.checked);
+      const query = all ? "all=true" : `limit=${limit}`;
+      const data = await request(`/api/admin/db/table/${encodeURIComponent(table)}?${query}`);
+      state.sql.pk = data.primary_key;
+      state.sql.rows = data.data || [];
+      state.sql.columns = data.columns || [];
+      renderSqlTable();
+      showStatus("ok", `Tabla ${table}: ${data.total} filas cargadas${all ? " (modo completo)" : ""}.`);
+    }
+
+    function renderSqlTable() {
+      const rows = state.sql.rows;
+      if (!rows || rows.length === 0) {
+        els.sqlTableData.innerHTML = "<tr><td>No hay datos para esta tabla.</td></tr>";
+        return;
+      }
+      const keys = Object.keys(rows[0]);
+      const head = `<tr>${keys.map((k) => `<th>${k}</th>`).join("")}<th>acciones</th></tr>`;
+      const body = rows.map((row) => {
+        const tds = keys.map((k) => `<td>${escapeHtml(row[k])}</td>`).join("");
+        const pkValue = state.sql.pk ? row[state.sql.pk] : "";
+        const dis = state.sql.pk ? "" : "disabled";
+        return `<tr>${tds}
+          <td>
+            <button class="btn" data-act="edit-row" data-id="${escapeHtml(pkValue)}" ${dis}>Editar</button>
+            <button class="btn danger" data-act="del-row" data-id="${escapeHtml(pkValue)}" ${dis}>Borrar</button>
+          </td>
+        </tr>`;
+      }).join("");
+      els.sqlTableData.innerHTML = `${head}${body}`;
+    }
+
+    async function createRow() {
+      if (!isAdmin()) throw new Error("Solo admin puede agregar filas.");
+      const table = state.sql.table || els.sqlTable.value;
+      if (!table) throw new Error("Selecciona una tabla.");
+      const raw = prompt("JSON de nueva fila. Ej: {\"nombre\":\"Nodo Sur\",\"estado\":\"activo\"}");
+      if (!raw) return;
+      let payload;
+      try { payload = JSON.parse(raw); } catch { throw new Error("JSON invalido para crear fila."); }
+      await request(`/api/admin/db/table/${encodeURIComponent(table)}`, { method: "POST", body: JSON.stringify(payload) });
+      showStatus("ok", "Fila creada correctamente.");
+      await loadTableData();
+    }
+
+    async function editRow(pkValue) {
+      if (!isAdmin()) throw new Error("Solo admin puede editar filas.");
+      if (!state.sql.pk) throw new Error("La tabla no tiene llave primaria para editar.");
+      const row = state.sql.rows.find((r) => String(r[state.sql.pk]) === String(pkValue));
+      const seed = row ? JSON.stringify(row, null, 2) : "{}";
+      const raw = prompt("Edita JSON de la fila (sin llave primaria):", seed);
+      if (!raw) return;
+      let payload;
+      try { payload = JSON.parse(raw); } catch { throw new Error("JSON invalido para editar fila."); }
+      delete payload[state.sql.pk];
+      await request(`/api/admin/db/table/${encodeURIComponent(state.sql.table)}/${encodeURIComponent(pkValue)}`, {
+        method: "PUT",
+        body: JSON.stringify(payload)
+      });
+      showStatus("ok", `Fila ${pkValue} actualizada.`);
+      await loadTableData();
+    }
+
+    async function deleteRow(pkValue) {
+      if (!isAdmin()) throw new Error("Solo admin puede borrar filas.");
+      if (!state.sql.pk) throw new Error("La tabla no tiene llave primaria para borrar.");
+      if (!confirm(`Eliminar fila ${pkValue} de ${state.sql.table}?`)) return;
+      await request(`/api/admin/db/table/${encodeURIComponent(state.sql.table)}/${encodeURIComponent(pkValue)}`, {
+        method: "DELETE"
+      });
+      showStatus("ok", `Fila ${pkValue} eliminada.`);
+      await loadTableData();
+    }
+
+    async function onLogout() {
+      state.token = "";
+      state.user = null;
+      localStorage.removeItem(TOKEN_KEY);
+      updateSessionUI();
+      setPanel("auth-panel");
+      showStatus("warn", "Sesion cerrada.");
+    }
+
+    function bindEvents() {
+      els.nav.addEventListener("click", (ev) => {
+        const btn = ev.target.closest("button[data-panel]");
+        if (!btn) return;
+        setPanel(btn.dataset.panel);
+      });
+
+      els.formLogin.addEventListener("submit", (ev) => onLogin(ev).catch(handleError));
+      els.formRegister.addEventListener("submit", (ev) => onRegister(ev).catch(handleError));
+      els.formUserCreate.addEventListener("submit", (ev) => createUser(ev).catch(handleError));
+      els.btnLoadUsers.addEventListener("click", () => loadUsers().catch(handleError));
+      els.btnDeleteUserId.addEventListener("click", () => deleteUserByIdInput().catch(handleError));
+      els.btnLoadTables.addEventListener("click", () => loadTables().catch(handleError));
+      els.btnLoadTableData.addEventListener("click", () => loadTableData().catch(handleError));
+      els.btnCreateRow.addEventListener("click", () => createRow().catch(handleError));
+      els.btnLogout.addEventListener("click", () => onLogout().catch(handleError));
+      els.btnGoSite.addEventListener("click", () => { window.location.href = "/"; });
+      els.sqlTable.addEventListener("change", () => { state.sql.table = els.sqlTable.value; });
+      els.sqlAll.addEventListener("change", () => {
+        els.sqlLimit.disabled = els.sqlAll.checked;
+      });
+
+      els.usersTable.addEventListener("click", (ev) => {
+        const btn = ev.target.closest("button[data-act]");
+        if (!btn) return;
+        const id = btn.dataset.id;
+        if (btn.dataset.act === "edit-user") editUser(id).catch(handleError);
+        if (btn.dataset.act === "del-user") deleteUser(id).catch(handleError);
+      });
+
+      els.sqlTableData.addEventListener("click", (ev) => {
+        const btn = ev.target.closest("button[data-act]");
+        if (!btn) return;
+        const id = btn.dataset.id;
+        if (btn.dataset.act === "edit-row") editRow(id).catch(handleError);
+        if (btn.dataset.act === "del-row") deleteRow(id).catch(handleError);
+      });
+    }
+
+    async function init() {
+      bindEvents();
+      updateSessionUI();
+      els.sqlLimit.disabled = els.sqlAll.checked;
+      showStatus("warn", "Inicia sesion para acceder al panel.");
+      if (state.token) {
+        try {
+          await loadMe();
+          if (isAdmin()) setPanel("users-panel");
+        } catch (error) {
+          onLogout();
+          handleError(error);
+        }
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

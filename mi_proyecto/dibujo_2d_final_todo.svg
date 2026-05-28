@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <defs>
+    <style>
+      .title { font: 700 38px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .h2 { font: 700 23px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .txt { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .mono { font: 700 18px 'Consolas', monospace; fill: #0f172a; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#111827"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="980" fill="#f8fafc"/>
+  <rect x="20" y="20" width="1560" height="940" rx="20" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <text x="50" y="72" class="title">Dibujo 2D final - Arduino + MPU6050 + 3 LEDs + buzzer</text>
+
+  <!-- Arduino -->
+  <rect x="60" y="130" width="350" height="360" rx="16" fill="#dbeafe" stroke="#3b82f6" stroke-width="3"/>
+  <text x="92" y="178" class="h2">Arduino UNO</text>
+  <text x="92" y="216" class="mono">5V</text>
+  <text x="92" y="246" class="mono">GND</text>
+  <text x="92" y="276" class="mono">A4 (SDA)</text>
+  <text x="92" y="306" class="mono">A5 (SCL)</text>
+  <text x="92" y="352" class="mono">D4 - LED verde</text>
+  <text x="92" y="382" class="mono">D5 - LED amarillo</text>
+  <text x="92" y="412" class="mono">D6 - LED rojo</text>
+  <text x="92" y="442" class="mono">D8 - Buzzer +</text>
+
+  <!-- Breadboard -->
+  <rect x="460" y="120" width="1080" height="780" rx="16" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="500" y="165" class="h2">Protoboard (vista superior)</text>
+  <rect x="500" y="192" width="1000" height="26" rx="8" fill="#fee2e2" stroke="#ef4444"/>
+  <rect x="500" y="230" width="1000" height="26" rx="8" fill="#dbeafe" stroke="#2563eb"/>
+  <text x="510" y="210" class="txt">Riel rojo (+5V)</text>
+  <text x="510" y="248" class="txt">Riel azul (GND)</text>
+
+  <!-- MPU -->
+  <rect x="560" y="620" width="320" height="200" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+  <text x="600" y="665" class="h2">MPU6050</text>
+  <text x="600" y="704" class="mono">VCC  GND  SDA  SCL</text>
+
+  <!-- LEDs -->
+  <circle cx="980" cy="350" r="28" fill="#4ade80" stroke="#166534" stroke-width="3"/>
+  <text x="1025" y="357" class="txt">LED verde</text>
+  <rect x="900" y="340" width="50" height="20" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="866" y="332" class="txt">220</text>
+
+  <circle cx="980" cy="440" r="28" fill="#fde047" stroke="#854d0e" stroke-width="3"/>
+  <text x="1025" y="447" class="txt">LED amarillo</text>
+  <rect x="900" y="430" width="50" height="20" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="866" y="422" class="txt">220</text>
+
+  <circle cx="980" cy="530" r="28" fill="#f87171" stroke="#7f1d1d" stroke-width="3"/>
+  <text x="1025" y="537" class="txt">LED rojo</text>
+  <rect x="900" y="520" width="50" height="20" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="866" y="512" class="txt">220</text>
+
+  <!-- Buzzer -->
+  <circle cx="1300" cy="450" r="52" fill="#111827" stroke="#0f172a" stroke-width="3"/>
+  <text x="1265" y="534" class="txt">Buzzer</text>
+  <text x="1246" y="556" class="txt">+ a D8 / - a GND</text>
+
+  <!-- Wires main -->
+  <path d="M410,212 C470,212 470,206 500,206" stroke="#ef4444" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M410,242 C470,242 470,244 500,244" stroke="#2563eb" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M410,272 C540,272 560,700 600,700" stroke="#0ea5e9" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M410,302 C540,302 560,740 680,740" stroke="#22c55e" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+
+  <path d="M410,348 C700,348 760,350 900,350" stroke="#22c55e" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M410,378 C700,378 760,440 900,440" stroke="#eab308" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M410,408 C700,408 760,530 900,530" stroke="#ef4444" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M410,438 C820,438 980,420 1248,420" stroke="#7c3aed" stroke-width="5" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- LED cathodes to GND rail -->
+  <path d="M980,378 C980,440 860,440 860,244" stroke="#2563eb" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M980,468 C980,520 890,520 890,244" stroke="#2563eb" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M980,558 C980,610 920,610 920,244" stroke="#2563eb" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M1352,450 C1420,450 1420,244 1220,244" stroke="#2563eb" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Checklist -->
+  <rect x="60" y="540" width="350" height="350" rx="14" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="82" y="582" class="h2">Checklist</text>
+  <text x="82" y="618" class="txt">1) 5V -> riel rojo</text>
+  <text x="82" y="646" class="txt">2) GND -> riel azul</text>
+  <text x="82" y="674" class="txt">3) MPU: VCC/GND/SDA/SCL</text>
+  <text x="82" y="702" class="txt">4) D4->220->LED verde (+)</text>
+  <text x="82" y="730" class="txt">5) D5->220->LED amarillo (+)</text>
+  <text x="82" y="758" class="txt">6) D6->220->LED rojo (+)</text>
+  <text x="82" y="786" class="txt">7) LED (-) -> riel azul</text>
+  <text x="82" y="814" class="txt">8) D8 -> buzzer (+)</text>
+  <text x="82" y="842" class="txt">9) buzzer (-) -> riel azul</text>
+  <text x="82" y="874" class="txt">No usar HC-05 por ahora</text>
+</svg>

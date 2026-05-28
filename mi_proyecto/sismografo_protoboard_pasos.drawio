@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" modified="2026-05-24T19:05:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="page-1" name="Protoboard paso a paso">
+    <mxGraphModel dx="1800" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Sismografo fisico: cableado en protoboard (sin Bluetooth)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#2563eb;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="1740" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="arduino" value="Arduino UNO&#xa;&#xa;Usar pines:&#xa;5V, GND, A4, A5, D4, D5, D6, D8" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;fontSize=17;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="360" height="230" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="bread" value="PROTOBOARD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="120" width="1240" height="780" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="railp" value="Riel + (rojo)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#ef4444;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="510" y="170" width="1160" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="railm" value="Riel - (azul)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#2563eb;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="510" y="220" width="1160" height="38" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="mpu" value="MPU6050&#xa;(colocalo en un extremo de la protoboard)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#16a34a;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="560" y="310" width="320" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="mpupins" value="Pines del MPU6050:&#xa;VCC&#xa;GND&#xa;SDA&#xa;SCL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontSize=14;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="320" width="180" height="160" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ledg" value="LED verde&#xa;(patita larga +)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#16a34a;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="330" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ledy" value="LED amarillo&#xa;(patita larga +)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef9c3;strokeColor=#eab308;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="330" width="180" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ledr" value="LED rojo&#xa;(patita larga +)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#ef4444;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="440" width="180" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="resg" value="Resistencia 220 ohm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="560" width="170" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="resy" value="Resistencia 220 ohm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="560" width="170" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="resr" value="Resistencia 220 ohm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="615" width="170" height="45" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="buzzer" value="Buzzer&#xa;+ y -" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#7c3aed;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="670" width="150" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="steps" value="Pasos (en orden):&#xa;1. Cable 1: Arduino 5V -&gt; riel rojo (+).&#xa;2. Cable 2: Arduino GND -&gt; riel azul (-).&#xa;3. Cable 3: MPU VCC -&gt; riel rojo (+).&#xa;4. Cable 4: MPU GND -&gt; riel azul (-).&#xa;5. Cable 5: Arduino A4 -&gt; MPU SDA.&#xa;6. Cable 6: Arduino A5 -&gt; MPU SCL.&#xa;7. Cable 7: D4 -&gt; resistencia -&gt; LED verde (+).&#xa;8. Cable 8: D5 -&gt; resistencia -&gt; LED amarillo (+).&#xa;9. Cable 9: D6 -&gt; resistencia -&gt; LED rojo (+).&#xa;10. Cable 10: patita corta de cada LED -&gt; riel azul (-).&#xa;11. Cable 11: D8 -&gt; buzzer (+).&#xa;12. Cable 12: buzzer (-) -&gt; riel azul (-)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#f97316;fontSize=15;align=left;spacingLeft=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="70" y="410" width="350" height="490" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="warn" value="NO conectar ahora: HC-05 a RX/TX (0 y 1)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#ef4444;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="130" width="390" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="w1" value="1" style="endArrow=block;endFill=1;strokeWidth=3;strokeColor=#ef4444;fontSize=14;fontStyle=1;" edge="1" parent="1" source="arduino" target="railp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w2" value="2" style="endArrow=block;endFill=1;strokeWidth=3;strokeColor=#2563eb;fontSize=14;fontStyle=1;" edge="1" parent="1" source="arduino" target="railm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w3" value="3" style="endArrow=block;endFill=1;strokeWidth=3;strokeColor=#ef4444;fontSize=14;fontStyle=1;" edge="1" parent="1" source="railp" target="mpu">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w4" value="4" style="endArrow=block;endFill=1;strokeWidth=3;strokeColor=#2563eb;fontSize=14;fontStyle=1;" edge="1" parent="1" source="railm" target="mpu">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w5" value="5 (A4 - SDA)" style="endArrow=block;endFill=1;strokeWidth=3;strokeColor=#0ea5e9;fontSize=13;fontStyle=1;" edge="1" parent="1" source="arduino" target="mpupins">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w6" value="6 (A5 - SCL)" style="endArrow=block;endFill=1;strokeWidth=3;strokeColor=#22c55e;fontSize=13;fontStyle=1;" edge="1" parent="1" source="arduino" target="mpupins">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="980" y="520"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

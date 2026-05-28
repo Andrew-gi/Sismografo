@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net" modified="2026-05-24T20:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="rows-1" name="LEDs por filas">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Protoboard: conexion de LEDs por filas (ejemplo exacto)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#2563eb;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="1540" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="arduino" value="Arduino UNO&#xa;D4 (verde)&#xa;D5 (amarillo)&#xa;D6 (rojo)&#xa;GND" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;fontSize=17;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="70" y="150" width="260" height="240" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="bread" value="PROTOBOARD (vista superior)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#334155;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="120" width="1140" height="760" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="railp" value="Riel rojo (+)  [no usado para LEDs]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#ef4444;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="430" y="170" width="1060" height="34" as="geometry"/>
+        </mxCell>
+        <mxCell id="railgnd" value="Riel azul (-) = GND" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#2563eb;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="215" width="1060" height="34" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rows" value="Filas usadas (ejemplo):&#xa;Fila 20 -> LED VERDE&#xa;Fila 24 -> LED AMARILLO&#xa;Fila 28 -> LED ROJO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#f97316;fontSize=16;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="430" y="270" width="430" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ledg" value="LED VERDE&#xa;Pata larga (+) en fila 20 lado izq&#xa;Pata corta (-) en fila 20 lado der" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#16a34a;fontSize=14;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="280" width="560" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ledy" value="LED AMARILLO&#xa;Pata larga (+) en fila 24 lado izq&#xa;Pata corta (-) en fila 24 lado der" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef9c3;strokeColor=#eab308;fontSize=14;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="390" width="560" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ledr" value="LED ROJO&#xa;Pata larga (+) en fila 28 lado izq&#xa;Pata corta (-) en fila 28 lado der" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fee2e2;strokeColor=#ef4444;fontSize=14;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="500" width="560" height="90" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="steps" value="Conecta exactamente asi:&#xa;1) GND Arduino -> riel azul (-).&#xa;2) D4 -> resistencia 220 -> fila 20 (pata larga LED verde).&#xa;3) Pata corta LED verde -> jumper al riel azul.&#xa;4) D5 -> resistencia 220 -> fila 24 (pata larga LED amarillo).&#xa;5) Pata corta LED amarillo -> jumper al riel azul.&#xa;6) D6 -> resistencia 220 -> fila 28 (pata larga LED rojo).&#xa;7) Pata corta LED rojo -> jumper al riel azul." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecfeff;strokeColor=#0891b2;fontSize=15;align=left;spacingLeft=10;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="430" y="620" width="1030" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="w_gnd" value="GND" style="endArrow=block;endFill=1;strokeWidth=3;strokeColor=#2563eb;fontSize=13;fontStyle=1;" edge="1" parent="1" source="arduino" target="railgnd">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w_d4" value="D4" style="endArrow=block;endFill=1;strokeWidth=3;strokeColor=#16a34a;fontSize=13;fontStyle=1;" edge="1" parent="1" source="arduino" target="ledg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w_d5" value="D5" style="endArrow=block;endFill=1;strokeWidth=3;strokeColor=#eab308;fontSize=13;fontStyle=1;" edge="1" parent="1" source="arduino" target="ledy">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="w_d6" value="D6" style="endArrow=block;endFill=1;strokeWidth=3;strokeColor=#ef4444;fontSize=13;fontStyle=1;" edge="1" parent="1" source="arduino" target="ledr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="note" value="Tip: si no enciende, gira el LED (invertiste larga/corta)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff1f2;strokeColor=#fb7185;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="860" width="600" height="40" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

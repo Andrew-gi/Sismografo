@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <defs>
+    <style>
+      .t1 { font: 700 40px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .t2 { font: 600 22px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .t3 { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="980" fill="#f8fafc"/>
+  <rect x="24" y="24" width="1552" height="932" rx="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <text x="54" y="78" class="t1">Modelo 3D (isometrico simplificado)</text>
+
+  <!-- Breadboard isometric -->
+  <polygon points="500,220 1260,220 1440,340 680,340" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+  <polygon points="680,340 1440,340 1440,720 680,720" fill="#cbd5e1" stroke="#64748b" stroke-width="2"/>
+  <polygon points="500,220 680,340 680,720 500,600" fill="#dbeafe" stroke="#64748b" stroke-width="2"/>
+
+  <text x="760" y="208" class="t2">Protoboard</text>
+  <text x="760" y="246" class="t3">Vista espacial para entender el conjunto</text>
+
+  <!-- Rails -->
+  <line x1="560" y1="252" x2="1320" y2="252" stroke="#ef4444" stroke-width="6"/>
+  <line x1="580" y1="274" x2="1340" y2="274" stroke="#2563eb" stroke-width="6"/>
+  <text x="1348" y="258" class="t3">+5V</text>
+  <text x="1360" y="280" class="t3">GND</text>
+
+  <!-- MPU block -->
+  <polygon points="760,500 930,500 970,530 800,530" fill="#86efac" stroke="#166534" stroke-width="2"/>
+  <polygon points="800,530 970,530 970,640 800,640" fill="#4ade80" stroke="#166534" stroke-width="2"/>
+  <polygon points="760,500 800,530 800,640 760,610" fill="#22c55e" stroke="#166534" stroke-width="2"/>
+  <text x="820" y="586" class="t3" fill="#052e16">MPU6050</text>
+
+  <!-- LEDs -->
+  <ellipse cx="1120" cy="500" rx="20" ry="30" fill="#4ade80" stroke="#14532d" stroke-width="3"/>
+  <ellipse cx="1180" cy="530" rx="20" ry="30" fill="#fde047" stroke="#854d0e" stroke-width="3"/>
+  <ellipse cx="1240" cy="560" rx="20" ry="30" fill="#f87171" stroke="#7f1d1d" stroke-width="3"/>
+  <text x="1090" y="620" class="t3">LEDs (D4, D5, D6)</text>
+
+  <!-- Buzzer -->
+  <ellipse cx="1060" cy="640" rx="44" ry="44" fill="#111827" stroke="#0f172a" stroke-width="3"/>
+  <text x="1020" y="702" class="t3">Buzzer D8</text>
+
+  <!-- Arduino -->
+  <polygon points="140,300 430,300 520,360 230,360" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+  <polygon points="230,360 520,360 520,700 230,700" fill="#93c5fd" stroke="#1d4ed8" stroke-width="2"/>
+  <polygon points="140,300 230,360 230,700 140,640" fill="#60a5fa" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="270" y="520" class="t2">Arduino UNO</text>
+  <text x="264" y="552" class="t3">5V, GND, A4, A5</text>
+  <text x="264" y="578" class="t3">D4, D5, D6, D8</text>
+
+  <!-- Wires -->
+  <path d="M 510 420 C 660 320, 760 280, 1080 252" stroke="#ef4444" stroke-width="5" fill="none"/>
+  <path d="M 510 450 C 700 360, 780 320, 1120 274" stroke="#2563eb" stroke-width="5" fill="none"/>
+  <path d="M 510 480 C 680 440, 760 470, 760 530" stroke="#0ea5e9" stroke-width="5" fill="none"/>
+  <path d="M 510 510 C 700 470, 790 500, 800 560" stroke="#22c55e" stroke-width="5" fill="none"/>
+  <path d="M 510 560 C 730 520, 930 500, 1120 500" stroke="#22c55e" stroke-width="5" fill="none"/>
+  <path d="M 510 590 C 760 550, 970 540, 1180 530" stroke="#eab308" stroke-width="5" fill="none"/>
+  <path d="M 510 620 C 780 590, 990 570, 1240 560" stroke="#ef4444" stroke-width="5" fill="none"/>
+  <path d="M 510 650 C 760 650, 920 648, 1018 640" stroke="#7c3aed" stroke-width="5" fill="none"/>
+
+  <path d="M 1120 530 C 1140 420, 1120 350, 1120 274" stroke="#2563eb" stroke-width="4" fill="none"/>
+  <path d="M 1180 560 C 1200 470, 1200 390, 1190 274" stroke="#2563eb" stroke-width="4" fill="none"/>
+  <path d="M 1240 590 C 1260 500, 1260 420, 1250 274" stroke="#2563eb" stroke-width="4" fill="none"/>
+  <path d="M 1104 640 C 1140 560, 1120 480, 1140 274" stroke="#2563eb" stroke-width="4" fill="none"/>
+
+  <!-- Legend -->
+  <rect x="60" y="760" width="1480" height="150" rx="16" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="88" y="804" class="t2">Lectura rapida</text>
+  <text x="88" y="836" class="t3">Rojo = 5V, Azul = GND, Celeste/Verde = I2C del MPU (A4/A5), Verde/Amarillo/Rojo = señales de LEDs, Morado = buzzer (D8).</text>
+  <text x="88" y="868" class="t3">Haz primero el 2D para montar exacto; usa este 3D para ubicar mentalmente cada parte.</text>
+</svg>

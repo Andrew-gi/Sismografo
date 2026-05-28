@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1100" viewBox="0 0 1700 1100">
+  <defs>
+    <style>
+      .title { font: 700 40px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 600 22px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .txt { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .lab { font: 700 18px 'Consolas', monospace; fill: #0f172a; }
+      .small { font: 500 15px 'Consolas', monospace; fill: #475569; }
+    </style>
+    <pattern id="holes" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#ffffff"/>
+      <circle cx="12" cy="12" r="3.4" fill="#dbeafe" stroke="#94a3b8" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1700" height="1100" fill="#f8fafc"/>
+  <rect x="24" y="24" width="1652" height="1052" rx="22" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+
+  <text x="52" y="82" class="title">Protoboard 2D con TODOS los agujeros y coordenadas</text>
+  <text x="52" y="118" class="sub">Asi no conectas al azar: usa coordenadas tipo A20, F20, J20, etc.</text>
+
+  <!-- rails -->
+  <rect x="90" y="160" width="1520" height="46" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <rect x="90" y="214" width="1520" height="46" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="106" y="190" class="lab">Riel +</text>
+  <text x="106" y="244" class="lab">Riel - (GND)</text>
+
+  <!-- main matrix blocks -->
+  <rect x="90" y="300" width="640" height="720" rx="12" fill="url(#holes)" stroke="#64748b" stroke-width="2"/>
+  <rect x="790" y="300" width="640" height="720" rx="12" fill="url(#holes)" stroke="#64748b" stroke-width="2"/>
+  <rect x="740" y="300" width="40" height="720" fill="#eef2ff"/>
+  <text x="744" y="670" transform="rotate(-90 744 670)" class="lab">Canal central (NO conecta entre lados)</text>
+
+  <!-- col labels -->
+  <text x="120" y="286" class="lab">A</text>
+  <text x="180" y="286" class="lab">B</text>
+  <text x="240" y="286" class="lab">C</text>
+  <text x="300" y="286" class="lab">D</text>
+  <text x="360" y="286" class="lab">E</text>
+  <text x="820" y="286" class="lab">F</text>
+  <text x="880" y="286" class="lab">G</text>
+  <text x="940" y="286" class="lab">H</text>
+  <text x="1000" y="286" class="lab">I</text>
+  <text x="1060" y="286" class="lab">J</text>
+
+  <!-- row labels 1..30 -->
+  <text x="58" y="322" class="small">1</text>
+  <text x="58" y="346" class="small">2</text>
+  <text x="58" y="370" class="small">3</text>
+  <text x="58" y="394" class="small">4</text>
+  <text x="58" y="418" class="small">5</text>
+  <text x="58" y="442" class="small">6</text>
+  <text x="58" y="466" class="small">7</text>
+  <text x="58" y="490" class="small">8</text>
+  <text x="58" y="514" class="small">9</text>
+  <text x="48" y="538" class="small">10</text>
+  <text x="48" y="562" class="small">11</text>
+  <text x="48" y="586" class="small">12</text>
+  <text x="48" y="610" class="small">13</text>
+  <text x="48" y="634" class="small">14</text>
+  <text x="48" y="658" class="small">15</text>
+  <text x="48" y="682" class="small">16</text>
+  <text x="48" y="706" class="small">17</text>
+  <text x="48" y="730" class="small">18</text>
+  <text x="48" y="754" class="small">19</text>
+  <text x="48" y="778" class="small">20</text>
+  <text x="48" y="802" class="small">21</text>
+  <text x="48" y="826" class="small">22</text>
+  <text x="48" y="850" class="small">23</text>
+  <text x="48" y="874" class="small">24</text>
+  <text x="48" y="898" class="small">25</text>
+  <text x="48" y="922" class="small">26</text>
+  <text x="48" y="946" class="small">27</text>
+  <text x="48" y="970" class="small">28</text>
+  <text x="48" y="994" class="small">29</text>
+  <text x="48" y="1018" class="small">30</text>
+
+  <!-- connection rule visualization -->
+  <rect x="100" y="760" width="300" height="24" fill="#86efac" opacity="0.65"/>
+  <text x="105" y="750" class="txt">Ejemplo: A20-B20-C20-D20-E20 SI conectan</text>
+  <rect x="800" y="760" width="300" height="24" fill="#fca5a5" opacity="0.65"/>
+  <text x="805" y="750" class="txt">F20-G20-H20-I20-J20 SI conectan</text>
+  <line x1="400" y1="772" x2="800" y2="772" stroke="#111827" stroke-width="3" stroke-dasharray="8 7"/>
+  <text x="500" y="742" class="txt">Entre E20 y F20 NO conectan (canal)</text>
+
+  <!-- exact suggested holes for your LEDs -->
+  <rect x="1220" y="330" width="410" height="280" rx="14" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="1240" y="364" class="sub">Para que NO te confundas (exacto):</text>
+  <text x="1240" y="400" class="txt">LED verde: larga en E20, corta en F20</text>
+  <text x="1240" y="432" class="txt">LED amarillo: larga en E24, corta en F24</text>
+  <text x="1240" y="464" class="txt">LED rojo: larga en E28, corta en F28</text>
+  <text x="1240" y="500" class="txt">D4 -> resistencia -> E20</text>
+  <text x="1240" y="532" class="txt">D5 -> resistencia -> E24</text>
+  <text x="1240" y="564" class="txt">D6 -> resistencia -> E28</text>
+  <text x="1240" y="596" class="txt">F20/F24/F28 -> riel azul (GND)</text>
+
+  <!-- buzzer placement hint -->
+  <rect x="1220" y="640" width="410" height="180" rx="14" fill="#eef2ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="1240" y="674" class="sub">Buzzer:</text>
+  <text x="1240" y="708" class="txt">+ en J16</text>
+  <text x="1240" y="740" class="txt">- en J18</text>
+  <text x="1240" y="772" class="txt">D8 -> J16</text>
+  <text x="1240" y="804" class="txt">J18 -> riel azul (GND)</text>
+
+  <!-- arrows to important spots -->
+  <line x1="1210" y1="398" x2="1110" y2="778" stroke="#0f172a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="1210" y1="430" x2="1110" y2="874" stroke="#0f172a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="1210" y1="462" x2="1110" y2="970" stroke="#0f172a" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- footer -->
+  <rect x="90" y="1032" width="1520" height="30" rx="8" fill="#0f172a"/>
+  <text x="102" y="1053" class="small" fill="#f8fafc">Regla clave: en cada fila solo conectan 5 agujeros (A-E) y 5 agujeros (F-J). Nunca cruza automaticamente el canal central.</text>
+</svg>

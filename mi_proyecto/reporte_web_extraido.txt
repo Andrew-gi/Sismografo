@@ -1,0 +1,162 @@
+PAGES 15
+
+--- PAGE 1 ---
+
+1. Creamos una carpeta del proyecto la abrimos con code .  
+ 
+2. Luego de estar dentro del proyecto agrague una carpeta par mi caso Proyecto. 
+Ubíquese en la carpeta y cree la paquete JS con el comando npm init -y , debe 
+quedar así como muestra la imagen  
+ 
+ 
+3. Instale la siguiente librería que utilizara para los reportes en excell  
+ 
+ 
+ 
+4. Debe salirle algo así : 
+
+
+--- PAGE 2 ---
+
+ 
+ 
+5. Altere la tabla en su base de datos, agregue el campo archivos 
+ 
+ 
+6. Consulte la tabla para comprobar la alteración  
+
+
+--- PAGE 3 ---
+
+ 
+ 
+7. Vamos a utilizar las siguientes librerías para que tenga en cuenta  
+➢ multer → sirve para subir archivos  
+➢ exceljs → sirve para exportar Excel  
+➢ pdfkit → sirve para generar reportes en  PDF 
+8. En el proyecto instalar lo siguiente , son las dependencias mencionadas 
+anteriormente. 
+ 
+ 
+ 
+9. Debe quedar así : ahí ya tenemos todas las dependencias que requiere  
+ 
+10. Cree la siguiente arquitectura para el proyecto , agregue los archivos  
+En Proyecto agregue los archivos : 
+➢ server.js 
+➢ database.js 
+➢ uploads.js 
+En routes 
+
+
+--- PAGE 4 ---
+
+➢ usuarios.routes.js 
+Controllers 
+➢ usuarios.controllers.js 
+11. Creamos el archivo de conexión agregue el siguiente código en database.js 
+ 
+12. En el archivo server.js agregue lo siguiente : 
+ 
+13. Al archivo rourters agregue lo siguiente: 
+
+
+--- PAGE 5 ---
+
+ 
+14. En controllers/usuarios.controller.js agregue : 
+ 
+ 
+
+
+--- PAGE 6 ---
+
+ 
+ 
+ 
+ 
+
+
+--- PAGE 7 ---
+
+ 
+ 
+ 
+
+
+--- PAGE 8 ---
+
+ 
+15. Corra el servidor, debe enviarle el mensaje servidor funcionando  
+16. Por último para probar debe agregar el index.html para la vista del proyecto. 
+Agregue el siguiente código. 
+ 
+ 
+
+
+--- PAGE 9 ---
+
+ 
+ 
+ 
+ 
+
+
+--- PAGE 10 ---
+
+ 
+ 
+ 
+ 
+
+
+--- PAGE 11 ---
+
+ 
+ 
+ 
+
+
+--- PAGE 12 ---
+
+ 
+ 
+ 
+ 
+
+
+--- PAGE 13 ---
+
+ 
+ 
+ 
+ 
+Finalmente se despliega de la siguiente manera : 
+ 
+
+
+--- PAGE 14 ---
+
+ 
+ 
+ 
+ 
+ 
+Funcionando las descargas, y carga de archivos  
+
+
+--- PAGE 15 ---
+
+ 
+ 
+Reestructure el proyecto, poniendo los estilos en otro archivo. La entrega se realizara el 
+próximo 18 de mayo el taller y en el proyecto 25 de mayo como entrega final. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+

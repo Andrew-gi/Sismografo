@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportes de Usuarios</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <h1>Modulo de Reportes</h1>
+    <p class="sub">Subida de archivos y descarga de reportes (Excel / PDF)</p>
+
+    <section class="card">
+      <h2>Acceso rapido (login)</h2>
+      <div class="row">
+        <input id="loginEmail" type="text" placeholder="Correo admin">
+        <input id="loginPassword" type="text" placeholder="Contrasena">
+        <button id="btnLoginToken">Iniciar y cargar token</button>
+      </div>
+      <p class="hint">Este boton obtiene el token automaticamente desde <code>/api/auth/login</code>.</p>
+    </section>
+
+    <section class="card">
+      <h2>Token JWT</h2>
+      <input id="token" type="text" placeholder="Pega aqui tu token Bearer">
+    </section>
+
+    <section class="card">
+      <h2>Cargar archivo a usuario</h2>
+      <div class="row">
+        <input id="usuarioId" type="number" min="1" placeholder="ID usuario">
+        <input id="archivo" type="file">
+        <button id="btnSubir">Subir archivo</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Descargar reportes</h2>
+      <div class="row">
+        <button id="btnExcel">Descargar Excel</button>
+        <button id="btnPdf">Descargar PDF</button>
+        <button id="btnUsuarios">Ver usuarios</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Listado de usuarios (admin)</h2>
+      <div class="table-wrap">
+        <table id="tablaUsuarios">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Activo</th>
+              <th>Archivo</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <pre id="resultado" class="resultado">Listo para operar.</pre>
+  </main>
+
+  <script src="./reportes.js"></script>
+</body>
+</html>

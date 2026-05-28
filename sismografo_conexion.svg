@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <defs>
+    <style>
+      .bg { fill: #f5f7fb; }
+      .panel { fill: #ffffff; stroke: #d7dfeb; stroke-width: 2; rx: 24; }
+      .title { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #162033; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #5a6a85; }
+      .section { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #1c2c46; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #20304d; }
+      .small { font: 500 15px 'Segoe UI', Arial, sans-serif; fill: #617089; }
+      .tiny { font: 600 14px 'Segoe UI', Arial, sans-serif; fill: #25344f; }
+      .pin { fill: #eef3fb; stroke: #b7c4d8; stroke-width: 1.5; rx: 8; }
+      .arduino { fill: #1e6fb7; stroke: #114c82; stroke-width: 3; rx: 28; }
+      .breadboard { fill: #fffdf8; stroke: #d9d1bf; stroke-width: 2.5; rx: 24; }
+      .module { fill: #25a9b5; stroke: #14757d; stroke-width: 3; rx: 18; }
+      .module-dark { fill: #4c5571; stroke: #30384f; stroke-width: 3; rx: 18; }
+      .led-g { fill: #34c759; stroke: #23863d; stroke-width: 2; }
+      .led-y { fill: #f4c430; stroke: #c89c12; stroke-width: 2; }
+      .led-r { fill: #f04b4b; stroke: #bc2b2b; stroke-width: 2; }
+      .buzzer { fill: #2c2f36; stroke: #111319; stroke-width: 2.5; }
+      .wire5v { stroke: #e94b4b; stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wiregnd { stroke: #222831; stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wiresda { stroke: #27ae60; stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wirescl { stroke: #f39c12; stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wired { stroke: #2f80ed; stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .wireopt { stroke: #8e44ad; stroke-width: 5; fill: none; stroke-dasharray: 10 10; stroke-linecap: round; stroke-linejoin: round; }
+      .note { fill: #f0f6ff; stroke: #bfd3f7; stroke-width: 2; rx: 18; }
+      .warn { fill: #fff7eb; stroke: #f1c27d; stroke-width: 2; rx: 18; }
+      .railp { stroke: #ef6b6b; stroke-width: 3; }
+      .railn { stroke: #5c7cfa; stroke-width: 3; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="980"/>
+
+  <text class="title" x="60" y="62">Conexión recomendada para tu sismógrafo físico + web</text>
+  <text class="subtitle" x="60" y="98">Basado en tus fotos: Arduino Uno + MPU6050 + LEDs + buzzer. El Bluetooth HC-05 es opcional y no se necesita para la web.</text>
+
+  <rect class="panel" x="48" y="130" width="1504" height="800" rx="28"/>
+
+  <text class="section" x="92" y="178">1. Montaje mínimo que sí funciona con tu página web</text>
+
+  <rect class="arduino" x="92" y="230" width="360" height="500" rx="28"/>
+  <text x="272" y="282" text-anchor="middle" style="font:700 32px 'Segoe UI', Arial, sans-serif; fill:#ffffff;">Arduino UNO</text>
+  <text x="272" y="315" text-anchor="middle" class="small" style="fill:#dcecff;">Conectado por USB al computador</text>
+
+  <rect class="pin" x="118" y="360" width="120" height="42"/>
+  <text class="label" x="178" y="388" text-anchor="middle">5V</text>
+  <rect class="pin" x="118" y="418" width="120" height="42"/>
+  <text class="label" x="178" y="446" text-anchor="middle">GND</text>
+  <rect class="pin" x="118" y="476" width="120" height="42"/>
+  <text class="label" x="178" y="504" text-anchor="middle">A4 / SDA</text>
+  <rect class="pin" x="118" y="534" width="120" height="42"/>
+  <text class="label" x="178" y="562" text-anchor="middle">A5 / SCL</text>
+
+  <rect class="pin" x="306" y="360" width="120" height="42"/>
+  <text class="label" x="366" y="388" text-anchor="middle">D4 LED verde</text>
+  <rect class="pin" x="306" y="418" width="120" height="42"/>
+  <text class="label" x="366" y="446" text-anchor="middle">D5 LED amarillo</text>
+  <rect class="pin" x="306" y="476" width="120" height="42"/>
+  <text class="label" x="366" y="504" text-anchor="middle">D6 LED rojo</text>
+  <rect class="pin" x="306" y="534" width="120" height="42"/>
+  <text class="label" x="366" y="562" text-anchor="middle">D8 buzzer</text>
+
+  <rect class="breadboard" x="546" y="244" width="724" height="430" rx="24"/>
+  <text class="section" x="574" y="280">Protoboard</text>
+  <line class="railp" x1="578" y1="305" x2="1238" y2="305"/>
+  <text class="tiny" x="1246" y="310">Riel +</text>
+  <line class="railn" x1="578" y1="334" x2="1238" y2="334"/>
+  <text class="tiny" x="1246" y="339">Riel -</text>
+
+  <rect class="module" x="942" y="390" width="220" height="130" rx="18"/>
+  <text x="1052" y="426" text-anchor="middle" style="font:700 26px 'Segoe UI', Arial, sans-serif; fill:#ffffff;">MPU6050</text>
+  <text x="1052" y="452" text-anchor="middle" class="small" style="fill:#eaffff;">Sensor sísmico / acelerómetro</text>
+
+  <rect class="pin" x="958" y="472" width="44" height="30"/>
+  <text class="tiny" x="980" y="492" text-anchor="middle">VCC</text>
+  <rect class="pin" x="1008" y="472" width="44" height="30"/>
+  <text class="tiny" x="1030" y="492" text-anchor="middle">GND</text>
+  <rect class="pin" x="1058" y="472" width="44" height="30"/>
+  <text class="tiny" x="1080" y="492" text-anchor="middle">SDA</text>
+  <rect class="pin" x="1108" y="472" width="44" height="30"/>
+  <text class="tiny" x="1130" y="492" text-anchor="middle">SCL</text>
+
+  <circle class="led-g" cx="650" cy="432" r="24"/>
+  <circle class="led-y" cx="726" cy="432" r="24"/>
+  <circle class="led-r" cx="802" cy="432" r="24"/>
+  <text class="small" x="626" y="474">LED verde</text>
+  <text class="small" x="694" y="474">LED amarillo</text>
+  <text class="small" x="780" y="474">LED rojo</text>
+
+  <circle class="buzzer" cx="690" cy="572" r="42"/>
+  <text x="690" y="578" text-anchor="middle" style="font:700 18px 'Segoe UI', Arial, sans-serif; fill:#ffffff;">BUZZER</text>
+
+  <rect class="pin" x="624" y="508" width="52" height="24"/>
+  <text class="tiny" x="650" y="525" text-anchor="middle">220Ω</text>
+  <rect class="pin" x="700" y="508" width="52" height="24"/>
+  <text class="tiny" x="726" y="525" text-anchor="middle">220Ω</text>
+  <rect class="pin" x="776" y="508" width="52" height="24"/>
+  <text class="tiny" x="802" y="525" text-anchor="middle">220Ω</text>
+
+  <path class="wire5v" d="M238 381 C360 381, 420 381, 578 381 L578 305 L980 305 L980 472"/>
+  <path class="wiregnd" d="M238 439 C350 439, 430 439, 578 439 L578 334 L1030 334 L1030 472"/>
+  <path class="wiresda" d="M238 497 C380 497, 450 497, 864 497 L864 487 L1080 487"/>
+  <path class="wirescl" d="M238 555 C370 555, 430 555, 886 555 L886 487 L1130 487"/>
+
+  <path class="wired" d="M426 381 C510 381, 544 381, 650 381 L650 508"/>
+  <path class="wired" d="M426 439 C520 439, 560 439, 726 439 L726 508"/>
+  <path class="wired" d="M426 497 C530 497, 580 497, 802 497 L802 508"/>
+  <path class="wired" d="M426 555 C520 555, 560 555, 690 555"/>
+
+  <path class="wiregnd" d="M650 532 L650 334"/>
+  <path class="wiregnd" d="M726 532 L726 334"/>
+  <path class="wiregnd" d="M802 532 L802 334"/>
+  <path class="wiregnd" d="M690 614 L690 334"/>
+
+  <rect class="note" x="92" y="760" width="1178" height="98" rx="18"/>
+  <text class="label" x="118" y="800">Conexión indispensable para que funcione con tu código actual:</text>
+  <text class="small" x="118" y="832">5V → VCC, GND → GND, A4 → SDA, A5 → SCL. Luego el Arduino va por USB al computador y la web recibe los datos.</text>
+
+  <rect class="module-dark" x="1320" y="252" width="164" height="230" rx="18"/>
+  <text x="1402" y="294" text-anchor="middle" style="font:700 28px 'Segoe UI', Arial, sans-serif; fill:#ffffff;">HC-05</text>
+  <text x="1402" y="322" text-anchor="middle" class="small" style="fill:#d7dcef;">Bluetooth opcional</text>
+
+  <rect class="pin" x="1342" y="352" width="120" height="28"/>
+  <text class="tiny" x="1402" y="371" text-anchor="middle">VCC / GND</text>
+  <rect class="pin" x="1342" y="388" width="120" height="28"/>
+  <text class="tiny" x="1402" y="407" text-anchor="middle">TXD / RXD</text>
+  <rect class="pin" x="1342" y="424" width="120" height="28"/>
+  <text class="tiny" x="1402" y="443" text-anchor="middle">STATE / EN</text>
+
+  <path class="wireopt" d="M1320 548 C1274 548, 1250 530, 1210 510"/>
+  <text class="small" x="1288" y="594">No lo conectes por ahora</text>
+  <text class="small" x="1288" y="620">si usarás USB + página web.</text>
+
+  <rect class="warn" x="1300" y="664" width="208" height="194" rx="18"/>
+  <text class="label" x="1322" y="704">Importante</text>
+  <text class="small" x="1322" y="738">No uses HC-05 en</text>
+  <text class="small" x="1322" y="762">RX/TX al mismo tiempo</text>
+  <text class="small" x="1322" y="786">que el USB serial.</text>
+  <text class="small" x="1322" y="826">Primero prueba solo:</text>
+  <text class="small" x="1322" y="850">Arduino + MPU6050 + USB.</text>
+
+  <text class="section" x="92" y="900">Resumen rápido</text>
+  <text class="small" x="270" y="900">MPU6050 sí es obligatorio. LEDs y buzzer son opcionales. HC-05 déjalo para una segunda etapa.</text>
+</svg>
